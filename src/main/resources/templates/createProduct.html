@@ -16,29 +16,29 @@
                 <span class="h1" th:text="${title}">Crea un Prodotto</span>
             </div>
             <div class="col-12 my-5">
-                    <form action="/products" method="POST" object="product">
+                    <form action="/products" method="POST" th:object="${product}">
                     <div class="row mb-3">
                         <div class="col">
                             <label for="name" class="form-label">Product name</label>
-                            <input id="name" type="text" class="form-control" field="name"
+                            <input id="name" type="text" class="form-control" th:field="*{name}"
                                 placeholder="Name..." required>
                         </div>
                         <div class="col">
                             <label for="description" class="form-label">Product description</label>
-                            <textarea id="description" class="form-control" field="description" placeholder="Description..." required></textarea>
+                            <textarea id="description" class="form-control" th:field="*{description}" placeholder="Description..." required></textarea>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input id="price" type="text" class="form-control" field="price"
-                            placeholder="mario.rossi@example.com" required>
+                        <input id="price" type="text" class="form-control" th:field="*{price}"
+                            placeholder="Price..." required>
                     </div>
 
                     <div class="mb-3">
                         <label for="category" class="form-label">Category</label>
-                        <select id="category" field="category" class="form-select">
-                            <option each="category:${categories}" value="category.id"
-                            text="category.name"></option>
+                        <select id="category" th:field="*{category}" class="form-select">
+                            <option th:each="category:${categories}" th:value="${category.id}"
+                            th:text="${category.name}"></option>
                         </select>
                     </div>
 
